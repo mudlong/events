@@ -132,7 +132,7 @@ async function contractCall(func, args, value) {
  //Fetch event info from blockchain
     event.push({
       name: events.name,
-      eventDatails: events.eventdetails,
+      eventDatails: events.eventDetails,
       eventPrice: events.eventPrice,
       eventImg: events.eventImg,
       timeStamp: events.timeStamp,
