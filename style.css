@@ -40,9 +40,13 @@ legend{
 #message{
 	width:60%;
 	margin: 0 auto;
-	z-index: 1000;
+}
+#loader{
+
 	text-align: center;
+	z-index: 1000;
 	display: none;
+	
 }
 
 .nav{
