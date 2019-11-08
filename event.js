@@ -139,7 +139,6 @@ async function contractCall(func, args, value) {
 
      renderEvents(); 
   $("#loader").hide();
-  });
 
   var x = document.getElementsByClassName('btn');
     for (let i = 0; i < x.length; i++) {
@@ -159,3 +158,4 @@ async function contractCall(func, args, value) {
  })
 }
 
+  });
