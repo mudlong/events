@@ -116,7 +116,7 @@ async function contractCall(func, args, value) {
       
 //      }
 
- window.onload('load', async() => {
+ window.addEventListener('load', async() => {
    //Display the loader .
   $("#loader").show();
 
@@ -169,4 +169,4 @@ async function contractCall(func, args, value) {
 //   $("#loader").hide();
 // });
 //  }
-// })
+})
