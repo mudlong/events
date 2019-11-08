@@ -133,7 +133,7 @@ async function contractCall(func, args, value) {
     event.push({
       name: events.name,
       eventDatails: events.eventdetails,
-      ticketPrice: events.eventPrice,
+      eventPrice: events.eventPrice,
       eventImg: events.eventImg,
       timeStamp: events.timeStamp,
       index :i,  
