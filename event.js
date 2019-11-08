@@ -123,7 +123,7 @@ async function contractCall(func, args, value) {
   client = await Ae.Aepp();
 
   var ticketsLength = await callStatic('getTicketslength', []); 
-  console.log(eventsLength)
+  console.log(ticketsLength)
 
   for (let i = 1; i <= ticketsLength; i++) {
 
