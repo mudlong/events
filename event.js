@@ -96,7 +96,7 @@ function renderEvents(){
 
 async function callStatic(func, args) {
   //Create a new contract instance that we can interact with
-  const contract = await client.getContractInstance(contractCode, {contractAddress});
+  const contract = await client.getContractInstance(aeSource, {contractAddress});
   //Make a call to get data of smart contract func, with specefied arguments 
   const calledGet = await contract.call(func, args, {callStatic: true}).catch(e => console.error(e));
   console.log('calledGet', calledGet);
