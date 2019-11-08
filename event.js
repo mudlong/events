@@ -33,7 +33,7 @@ const aeSource =`
           name      : string,
           eventImg   : string, 
           eventDetails  : string, 
-          timeStamp   : int;
+          timeStamp   : int,
           eventPrice   : int }  
           
   record state = 
@@ -51,7 +51,7 @@ const aeSource =`
         state.ticketslength
               
   stateful entrypoint uploadEvent(name' : string, eventImg' : string, eventDetails' : string, eventPrice' : int) =
-      let tickets = { uploadAddress = Call.caller, name = name', eventImg = eventImg', eventDetails = eventDetails',timeStamp = Chain.timestamp' eventPrice = eventPrice'}
+      let tickets = { uploadAddress = Call.caller, name = name', eventImg = eventImg', eventDetails = eventDetails',timeStamp = Chain.timestamp, eventPrice = eventPrice'}
       let index = getTicketslength() + 1
       put(state {ticket[index] = tickets, ticketslength = index })
         
