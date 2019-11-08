@@ -54,6 +54,10 @@ const aeSource =`
       let tickets = { uploadAddress = Call.caller, name = name', eventImg = eventImg', eventDetails = eventDetails',timeStamp = Chain.timestamp, eventPrice = eventPrice'}
       let index = getTicketslength() + 1
       put(state {ticket[index] = tickets, ticketslength = index })
+
+      stateful entrypoint ticketBooking(index : int) = 
+        let tickets = getevents(index)
+        Chain.spend(tickets.conAddress, Call.value) 
         
   `;        
      
@@ -61,15 +65,8 @@ const aeSource =`
 
 // ak_2DyzCMbhdFKyrj8BM7JTupovekoRisG98uRELK2mt29dGhF71b
 // ak_2LYMoS7HK2qdJ6m5B5n41UdZDx5ZzNgpPP7v4ybVkxQP8aMbVX
-
-      // stateful entrypoint orderFood(index : int) = 
-      //   let foodos = getfoody(index)
-      //   Chain.spend(foodos.conAddress, Call.value) 
-
-// const contractAddress = 'ct_7W4TBmvpHMpmp95stctgmBQoL9kqh6eLQUZNYRt7uHyiGdKUD';
-// const contractAddress = 'ct_2VZeyiXtgLv3zGih9sGEnQMtzojRgcg9WYZtK4VQx7NfzBG2TA';
-// const contractAddress = 'ct_SYi6Xg78ZE25vfQcyS1oZsR89zW6sYE2sezBYyTGkYUzuNCnc';
-const contractAddress = 'ct_NmD1dHe1zUdiSuq7BfiLzWN4puyv5Nhi3wqUGvNtoedj6q7vt';
+// ct_NmD1dHe1zUdiSuq7BfiLzWN4puyv5Nhi3wqUGvNtoedj6q7vt
+const contractAddress = 'ct_2vS8keeiEd5woEj5VneKygCHvZGoNvNdnH9f5fzU8L5pomMQ7J';
 
 var client = null;
 var ticketsLength = 0;
@@ -132,7 +129,7 @@ async function contractCall(func, args, value) {
  //Fetch event info from blockchain
     event.push({
       name: events.name,
-      eventDatails: events.eventDetails,
+      eventDetails: events.eventDetails,
       eventPrice: events.eventPrice,
       eventImg: events.eventImg,
       timeStamp: events.timeStamp,
@@ -142,31 +139,23 @@ async function contractCall(func, args, value) {
 
      renderEvents(); 
   $("#loader").hide();
-
   });
- //  var x = document.getElementsByClassName('btn');
- //    for (let i = 0; i < x.length; i++) {
+
+  var x = document.getElementsByClassName('btn');
+    for (let i = 0; i < x.length; i++) {
      
- //     x[i].addEventListener("click", async function(event){
- //     $("#loader").show();
- //     let template = "{{foodPrice}}",
- //      index = event.target.id,
- //      value = foodArray[i]['foodPrice'];
+     x[i].addEventListener("click", async function(event){
+     $("#loader").show();
+     let template = "{{eventPrice}}",
+      index = event.target.id,
+      value = event[i]['eventPrice'];
 
  
- //  await contractCall('orderFood', [index], value);
+  await contractCall('ticketBooking', [index], value);
 
- // console.log("order successfull");
- //     var y = document.getElementById('checkOut');
+ console.log("Your reservation is Booked. ");
 
- //     y.style.display ='block';
-     
-     // y.onsubmit = callOrder(x[i]);
-     // y.addEventListener("click", async function(event){
-       // await callOrder();
-     // })
-
-//   $("#loader").hide();
-// });
-//  }
+  $("#loader").hide();
+ })
+}
 
