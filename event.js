@@ -120,7 +120,7 @@ async function contractCall(func, args, value) {
    //Display the loader .
   $("#loader").show();
 
-  // client = await Ae.Aepp();
+  client = await Ae.Aepp();
 
   var ticketsLength = await callStatic('getTicketslength', []); 
   console.log(eventsLength)
