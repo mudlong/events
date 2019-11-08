@@ -155,7 +155,6 @@ async function contractCall(func, args, value) {
  console.log("Your reservation is Booked. ");
 
   $("#loader").hide();
- })
+ });
 }
-
-  });
+  })
